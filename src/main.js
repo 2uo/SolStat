@@ -4,7 +4,7 @@ import Buefy from 'buefy';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-axios.defaults.baseURL = "/api/"
+axios.defaults.baseURL = "http://localhost:3000/api/"
 
 Vue.use(VueAxios, axios)
 Vue.use(Buefy)

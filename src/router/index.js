@@ -3,7 +3,9 @@ import Router from 'vue-router'
 
 import Home from '../views/Home'
 import Login from '../views/Login'
-import Dashboard from '@/views/Dashboard'
+import Library from '@/views/Library'
+import NewBook from '@/views/NewBook'
+
 import store from '../store'
 
 Vue.use(Router)
@@ -31,17 +33,22 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'Головна',
       component: Home,
     },
     {
-      path: '/dash',
-      name: 'Dashboard',
-      component: Dashboard,
+      path: '/library',
+      name: 'Бібліотека',
+      component: Library,
+    },
+    {
+      path: '/new',
+      name: 'Створити',
+      component: NewBook
     },
     {
       path: '/login',
-      name: 'Login',
+      name: 'Вхід',
       component: Login,
     },
   ],

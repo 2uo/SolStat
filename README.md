@@ -1,4 +1,4 @@
-# tbot-web
+# SLib
 
 ## Project setup
 ```

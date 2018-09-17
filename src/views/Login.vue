@@ -1,11 +1,11 @@
 <template>
     <div class="columns">
-        <div class="column is-2 is-offset-5" id="login">
-            <h1 class="title">Log in</h1>
+        <div class="column box is-2 is-offset-5">
+            <h1 class="title">Вхід</h1>
             <form @submit.prevent="login">
                 <b-field :type="failed">
                     <b-input v-model="user.username"
-                             placeholder="username"
+                             placeholder="логін"
                              icon="account"
                     />
                 </b-field>
@@ -13,12 +13,12 @@
                     <b-input v-model="user.password"
                              type="password"
                              password-reveal
-                             placeholder="password"
+                             placeholder="пароль"
                              icon="lock"
                     />
                 </b-field>
                 <b-field>
-                    <button class="button is-block is-info" type="submit">Submit</button>
+                    <button class="button is-block is-info" type="submit">Ввійти</button>
                 </b-field>
             </form>
         </div>
@@ -61,8 +61,4 @@
 </script>
 
 <style scoped lang="scss">
-    #login {
-        border: 1px solid black;
-        border-radius: 10px;
-    }
 </style>

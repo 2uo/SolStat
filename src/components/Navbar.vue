@@ -2,18 +2,22 @@
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="dropdown navigation">
         <div class="navbar-brand">
             <a class="navbar-item title" href="/">
-                TBot
+                SLib
             </a>
         </div>
 
         <div class="navbar-menu">
             <div class="navbar-start" v-if="logged">
-                <router-link to="/dash" class="navbar-item">Dashboard</router-link>
+                <router-link to="/library" class="navbar-item">Бібліотека</router-link>
+                <router-link to="/new" class="navbar-item">Нова книга</router-link>
+            </div>
+            <div class="navbar-start" v-else>
+                <a class="navbar-item">Про систему</a>
             </div>
 
             <div class="navbar-end">
-                <router-link to="/login" v-if="!logged" class="navbar-item">Login</router-link>
-                <a class="navbar-item" v-if="logged" @click="logout()">Logout, {{username}}</a>
+                <router-link to="/login" v-if="!logged" class="navbar-item">Вхід</router-link>
+                <a class="navbar-item" v-if="logged" @click="logout()">Вийти, {{username}}</a>
             </div>
         </div>
     </nav>

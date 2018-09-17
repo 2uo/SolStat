@@ -4,7 +4,7 @@
         <section class="hero is-info">
             <div class="hero-body">
                 <div class="container">
-                    <h1 class="title">
+                    <h1 class="title is-size-1">
                         {{$route.name}}
                     </h1>
                 </div>
