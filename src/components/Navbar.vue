@@ -8,15 +8,18 @@
 
         <div class="navbar-menu">
             <div class="navbar-start" v-if="logged">
-                <router-link to="/library" class="navbar-item">Бібліотека</router-link>
-                <router-link to="/new" class="navbar-item">Нова книга</router-link>
+                <router-link to="/info" class="navbar-item">Панель інформації</router-link>
+                <router-link to="/info-manage" class="navbar-item">Керування інформацією та оплата</router-link>
+                <router-link to="/statistic" class="navbar-item">Статистика</router-link>
             </div>
             <div class="navbar-start" v-else>
-                <a class="navbar-item">Про систему</a>
+                <router-link to="/description" class="navbar-item">Опис</router-link>
+                <router-link to="/price" class="navbar-item">Прайс Лист</router-link>
             </div>
 
             <div class="navbar-end">
                 <router-link to="/login" v-if="!logged" class="navbar-item">Вхід</router-link>
+                <router-link to="/signup" v-if="!logged" class="navbar-item">Реєстрація</router-link>
                 <a class="navbar-item" v-if="logged" @click="logout()">Вийти, {{username}}</a>
             </div>
         </div>
