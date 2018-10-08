@@ -1,6 +1,6 @@
 <template>
     <div class="columns">
-        <div class="column box is-2 is-offset-5">
+        <div class="column box is-4 is-offset-4">
             <h1 class="title">Вхід</h1>
             <form @submit.prevent="login">
                 <b-field :type="failed">
@@ -18,7 +18,8 @@
                     />
                 </b-field>
                 <b-field>
-                    <button class="button is-block is-info" type="submit">Ввійти</button>
+                    <button class="button is-block is-link" type="submit">Ввійти</button>
+                    <input class="button is-block is-text" type="reset" value="Скинути">
                 </b-field>
             </form>
         </div>

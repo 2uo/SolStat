@@ -3,8 +3,13 @@ import Router from 'vue-router'
 
 import Home from '../views/Home'
 import Login from '../views/Login'
+import Info from '@/views/Info'
+import Price from '@/views/Price'
+import Signup from '@/views/Signup'
 import Library from '@/views/Library'
-import NewBook from '@/views/NewBook'
+import Statistic from '@/views/Statistic'
+import InfoManage from '@/views/InfoManage'
+import Description from '@/views/Description'
 
 import store from '../store'
 
@@ -42,14 +47,39 @@ export default new Router({
       component: Library,
     },
     {
-      path: '/new',
-      name: 'Створити',
-      component: NewBook
-    },
-    {
       path: '/login',
       name: 'Вхід',
       component: Login,
+    },
+    {
+      path: '/signup',
+      name: 'Реєстрація',
+      component: Signup
+    },
+    {
+      path: '/description',
+      name: 'Опис',
+      component: Description
+    },
+    {
+      path: '/info',
+      name: 'Інформація',
+      component: Info
+    },
+    {
+      path: '/info-manage',
+      name: 'Керування інформацією',
+      component: InfoManage
+    },
+    {
+      path: '/price',
+      name: 'Прайс Лист',
+      component: Price
+    },
+    {
+      path: '/statistic',
+      name: 'Статистика',
+      component: Statistic
     },
   ],
 })
