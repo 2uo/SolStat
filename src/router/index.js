@@ -6,7 +6,6 @@ import Login from '../views/Login'
 import Info from '@/views/Info'
 import Price from '@/views/Price'
 import Signup from '@/views/Signup'
-import Library from '@/views/Library'
 import Statistic from '@/views/Statistic'
 import InfoManage from '@/views/InfoManage'
 import Description from '@/views/Description'
@@ -40,11 +39,6 @@ export default new Router({
       path: '/',
       name: 'Головна',
       component: Home,
-    },
-    {
-      path: '/library',
-      name: 'Бібліотека',
-      component: Library,
     },
     {
       path: '/login',
