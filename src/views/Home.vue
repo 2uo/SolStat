@@ -1,23 +1,18 @@
 <template>
     <div class="container box has-text-left">
         <h1 class="title is-size-1">Головна сторінка</h1>
-        <p class="is-size-4">Опис проекту, назва закладу і загальна інформація</p>
+        <p class="is-size-4">Опис проекту і загальна інформація</p>
         <hr/>
         <p class="is-size-5">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit mi mauris. Etiam nunc neque, cursus
-            vel mollis eget, efficitur in nisl. Etiam ornare tempus massa, sit amet fringilla arcu placerat at. Quisque
-            eleifend tristique consectetur. Etiam sit amet tellus sed sapien lobortis elementum volutpat pellentesque
-            quam. Nulla quis augue aliquam, pharetra orci vitae, sollicitudin lacus. Aenean in mauris nisi. Quisque
-            ornare ante in quam porttitor, sit amet ornare quam dapibus. Donec porta velit at tincidunt ullamcorper.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce tempus justo
-            at libero lacinia fermentum. Morbi tristique ex a eros euismod fringilla. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Nunc suscipit mi mauris. Etiam nunc neque, cursus
-            vel mollis eget, efficitur in nisl. Etiam ornare tempus massa, sit amet fringilla arcu placerat at. Quisque
-            eleifend tristique consectetur. Etiam sit amet tellus sed sapien lobortis elementum volutpat pellentesque
-            quam. Nulla quis augue aliquam, pharetra orci vitae, sollicitudin lacus. Aenean in mauris nisi. Quisque
-            ornare ante in quam porttitor, sit amet ornare quam dapibus. Donec porta velit at tincidunt ullamcorper.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce tempus justo
-            at libero lacinia fermentum. Morbi tristique ex a eros euismod fringilla.
+            Проект SolStat - український стартап, напрямлений на полегшення роботи з Вашою сонячною електростанцією
+            шляхом зручного виведення статистики її роботи на будь-який зручний для Вас гаджет у будь-який момент.
+            Данні прораховуються надзвичайно швидко, а завдяки гарно оптимізованій системі Вам не доведеться довго
+            чекати на результати, на відміну від наших конкурентів. Вся статистика виводиться в максимально зручному
+            для аналізування вигляді. А зручні інтерактивні графіки доповнюють цю картину. <br> <br>
+            Аби розпочати роботу з нами вже найближчим часом - просто перейдіть на
+            <router-link to="/signup">сторінку реєстрації</router-link> і заповніть коротку анкету, відповівши на
+            декілька дуже простих запитань. Наші менеджери звяжуться з Вами і Ви зможете приступити до роботи з нами
+            одразу після <router-link to="/price">внесення оплати</router-link> за користування нашим продуктом.
         </p>
 
     </div>

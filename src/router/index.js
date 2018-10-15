@@ -9,6 +9,7 @@ import Signup from '@/views/Signup'
 import Statistic from '@/views/Statistic'
 import InfoManage from '@/views/InfoManage'
 import Description from '@/views/Description'
+import PrivacyPolicy from '@/views/PrivacyPolicy'
 
 import store from '../store'
 
@@ -74,6 +75,11 @@ export default new Router({
       path: '/statistic',
       name: 'Статистика',
       component: Statistic
+    },
+    {
+      path: '/privacy-policy',
+      name: 'Політика конфіденційності',
+      component: PrivacyPolicy
     },
   ],
 })

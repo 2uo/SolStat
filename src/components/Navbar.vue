@@ -2,7 +2,7 @@
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="dropdown navigation">
         <div class="navbar-brand">
             <a class="navbar-item title" href="/">
-                SLib
+                SolStat
             </a>
         </div>
 
