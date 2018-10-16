@@ -3,8 +3,6 @@
         <h1 class="title is-size-1">Головна сторінка</h1>
         <p class="is-size-4">Опис проекту і загальна інформація</p>
         <hr/>
-        <iframe src="https://www.pornhub.com/embed/ph5b8ffbaa244e7" frameborder="0" width="560" height="315" scrolling="no" allowfullscreen></iframe>
-        <hr/>
         <p class="is-size-5">
             Проект SolStat - український стартап, напрямлений на полегшення роботи з Вашою сонячною електростанцією
             шляхом зручного виведення статистики її роботи на будь-який зручний для Вас гаджет у будь-який момент.
