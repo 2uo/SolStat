@@ -18,7 +18,7 @@
                     />
                 </b-field>
                 <b-field :type="failed">
-                    <b-input v-model="user.nickname"
+                    <b-input v-model="user.username"
                              placeholder="Нікнейм"
                              icon="ticket-account"
                              title="_NickName_ Буде використаний як логін."
@@ -79,24 +79,22 @@
     name: 'Signup',
     data() {
       return {
-        user: {}
+        user: {},
+        failed: ""
       }
     },
     methods: {
       signup: function () {
-        this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
-          this.$router.push('/')
-        })
+        var that = this
+        this.axios({url: 'register', data: this.user, method: 'POST'})
+          .then(resp => {
+            console.log("registered")
+            that.failed = ""
+          })
+          .catch(err => {
+            that.failed = "is-danger"
+          })
       },
-    },
-    computed: {
-      failed() {
-        if (this.$store.state.auth.status === "error") {
-          return "is-danger"
-        } else {
-          return ""
-        }
-      }
     }
   }
 </script>
