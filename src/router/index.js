@@ -6,6 +6,7 @@ import Login from '../views/Login'
 import Info from '@/views/Info'
 import Price from '@/views/Price'
 import Signup from '@/views/Signup'
+import Payment from '@/views/Payment'
 import Statistic from '@/views/Statistic'
 import InfoManage from '@/views/InfoManage'
 import Description from '@/views/Description'
@@ -76,10 +77,15 @@ export default new Router({
       name: 'Статистика',
       component: Statistic
     },
-    {
-      path: '/privacy-policy',
-      name: 'Політика конфіденційності',
-      component: PrivacyPolicy
-    },
+      {
+          path: '/privacy-policy',
+          name: 'Політика конфіденційності',
+          component: PrivacyPolicy
+      },
+      {
+          path: '/payment',
+          name: 'Оплата',
+          component: Payment
+      },
   ],
 })

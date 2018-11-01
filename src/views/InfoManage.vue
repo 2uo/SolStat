@@ -4,7 +4,6 @@
             <div class="column box is-10 is-offset-1">
                 <h1 class="title">Керування Інформацією</h1>
                 <form>
-
                     <label class="label" for="name">Змінити Ім'я</label>
                     <div class="field">
                         <div class="control">
@@ -14,8 +13,22 @@
 
                     <label class="label" for="surname">Змінити Прізвище</label>
                     <div class="field">
-                        <div class="control ">
+                        <div class="control">
                             <input class="input" type="text" id="surname" placeholder="Прізвище">
+                        </div>
+                    </div>
+
+                    <label class="label" for="phone">Прив'язати новий номер телефону:</label>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="tel" id="phone" placeholder="Ваш новий номер телефону">
+                        </div>
+                    </div>
+
+                    <label class="label" for="email">Прив'язати нову електронну пошту:</label>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input" type="email" id="email" placeholder="Ваша нова електронна пошта">
                         </div>
                     </div>
 
@@ -47,11 +60,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-        <div class="columns">
-            <div class="column box is-10 is-offset-1">
-                Lol
             </div>
         </div>
     </div>

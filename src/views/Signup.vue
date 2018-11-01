@@ -1,7 +1,7 @@
 <template>
     <div class="columns">
         <div class="column box is-4 is-offset-4">
-            <h1 class="title">Вхід</h1>
+            <h1 class="title">Реєстрація</h1>
             <form @submit.prevent="signup">
                 <b-field :type="failed">
                     <b-input v-model="user.name"
