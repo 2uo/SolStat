@@ -11,55 +11,16 @@
             <p class="name"><strong>Тип підписки: </strong> Elite</p>
             <p class="name"><strong>Дія підписки: </strong> до 05.02.2019, 18:42</p>
             <hr>
-
-            <section>
-                <b-field>
-                    <b-upload v-model="dropFiles"
-                              multiple
-                              drag-drop>
-                        <section class="section">
-                            <div class="content has-text-centered">
-                                <p>
-                                    <b-icon
-                                            icon="upload"
-                                            size="is-large">
-                                    </b-icon>
-                                </p>
-                                <p>Drop your files here or click to upload</p>
-                            </div>
-                        </section>
-                    </b-upload>
-                </b-field>
-
-                <div class="tags">
-            <span v-for="(file, index) in dropFiles"
-                  :key="index"
-                  class="tag is-primary" >
-                {{file.name}}
-                <button class="delete is-small"
-                        type="button"
-                        @click="deleteDropFile(index)">
-                </button>
-            </span>
-                </div>
-            </section>
+            <form action="/api/upload" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <input type="submit" value="Надіслати">
+            </form>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                dropFiles: []
-            }
-        },
-        methods: {
-            deleteDropFile(index) {
-                this.dropFiles.splice(index, 1)
-            }
-        }
-    }
+    export default {}
 </script>
 
 <style>
