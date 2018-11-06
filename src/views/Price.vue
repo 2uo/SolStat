@@ -16,7 +16,8 @@
                             {{price.primary}} $
                         </span>
                     </p><br>
-                    <router-link to="/payment" class="button is-info is-medium">Замовити</router-link>
+                    <router-link to="/payment" class="button is-info is-medium" v-if="logged">Замовити</router-link>
+                    <router-link to="/signup" class="button is-info is-medium" v-else="logged">Замовити</router-link>
                 </div>
             </div>
 
@@ -34,7 +35,8 @@
                             {{price.elite}} $
                         </span>
                     </p><br>
-                    <router-link to="/payment" class="button is-primary is-medium">Замовити</router-link>
+                    <router-link to="/payment" class="button is-primary is-medium" v-if="logged">Замовити</router-link>
+                    <router-link to="/signup" class="button is-primary is-medium" v-else="logged">Замовити</router-link>
                 </div>
             </div>
         </div>
@@ -42,7 +44,9 @@
 </template>
 
 <script>
-  export default {
+
+
+    export default {
       data: function() {
           return {
               nowTime: new Date(),
@@ -62,7 +66,12 @@
                   return data
               }
           }
-      }
+      },
+        computed: {
+            logged() {
+                return this.$store.getters.isAuthenticated
+            }
+        }
   }
 </script>
 

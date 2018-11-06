@@ -33,6 +33,15 @@
                             pointBackgroundColor: '#1fcac8',
                             backgroundColor: '#00b5b1',
                             data: [20, 50, 5, 30, 78, 3, 30]
+                        },
+                        {
+                            label: 'Лінія залежності',
+                            borderWidth: 2,
+                            borderColor: '#09908E',
+                            pointBorderColor: '#F07272',
+                            pointBackgroundColor: '#10cac8',
+                            backgroundColor: '#FFb5b1',
+                            data: [10, 20, 50, 60, 30, 50, 10]
                         }
                     ]
                 }

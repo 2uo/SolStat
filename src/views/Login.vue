@@ -22,6 +22,9 @@
                     <input class="button is-block is-text" type="reset" value="Скинути">
                 </b-field>
             </form>
+            <b-message title="Реєстрація" type="is-info">
+                Якщо ви ще не зареєструвались, то ви можете це зробити на <router-link to="/signup">сторінці реєстрації</router-link>.
+            </b-message>
         </div>
     </div>
 </template>
@@ -62,4 +65,7 @@
 </script>
 
 <style scoped lang="scss">
+    form {
+        margin-bottom: 10px;
+    }
 </style>
