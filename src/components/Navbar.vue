@@ -5,7 +5,7 @@
                 SolStat
             </a>
 
-            <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <a role="button" class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -18,7 +18,7 @@
                 <router-link to="/info-manage" class="navbar-item">Керування інформацією</router-link>
                 <router-link to="/statistic" class="navbar-item">Статистика</router-link>
                 <router-link to="/payment" class="navbar-item">Оплата</router-link>
-                <router-link to="/price" class="navbar-item">Прайс Лист</router-link>
+                <router-link to="/price" class="navbar-item">Прайс Лист</router-link>x
             </div>
             <div class="navbar-start" v-else>
                 <router-link to="/description" class="navbar-item">Опис</router-link>
@@ -81,3 +81,9 @@
 
   });
 </script>
+
+<style>
+    .burger span {
+        color: darkblue;
+    }
+</style>
