@@ -1,12 +1,12 @@
 <template>
     <div class="columns">
-        <div class="column box is-8 is-offset-2 container">
+        <div class="column box is-8 is-offset-2 container has-text-left">
             <h1 class="title">Інформація про споживача:</h1>
-            <p class="name"><strong>Ім'я: </strong> Олексій</p>
-            <p class="surname"><strong>Прізвище: </strong> Лещук</p>
-            <p class="phone"><strong>Номер телефону: </strong> 063-675-85-67</p>
-            <p class="email"><strong>Електронна пошта: </strong> imperator.1903.petrushka@gmail.com</p>
-            <p class="registration"><strong>Дата реєтрації: </strong> 20.09.2018</p>
+            <p class="name"><strong>Ім'я: </strong> {{user.name}}</p>
+            <p class="surname"><strong>Прізвище: </strong> {{user.surname}}</p>
+            <p class="phone"><strong>Номер телефону: </strong> {{user.phone}}</p>
+            <p class="email"><strong>Електронна пошта: </strong> {{user.email}}</p>
+            <p class="registration"><strong>Дата реєтрації: </strong> {{user.created_at}}</p>
             <br>
             <p class="name"><strong>Тип підписки: </strong> Elite</p>
             <p class="name"><strong>Дія підписки: </strong> до 05.02.2019, 18:42</p>
@@ -41,7 +41,8 @@
     },
     data() {
       return {
-        files: []
+        files: [],
+        user: {}
       }
     },
     methods: {
@@ -53,18 +54,19 @@
       },
       submit: function () {
         const formData = new FormData()
-        formData.append("adif", this.files[0], this.files[0].name)
+        formData.append("csv", this.files[0], this.files[0].name)
         this.process(formData)
       }
+    },
+    beforeMount() {
+      this.axios.post('info')
+        .then(resp => {
+          this.user = resp.data.user
+        })
     }
   }
 </script>
 
 <style>
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+
 </style>

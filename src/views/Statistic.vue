@@ -46,7 +46,10 @@
                     ]
                 }
             }
-        }
+        },
+      beforeMount() {
+          this.axios.post('/stats')
+      }
     }
 </script>
 
