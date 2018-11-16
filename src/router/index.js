@@ -17,75 +17,75 @@ import store from '../store'
 Vue.use(Router)
 
 const ifNotAuthenticated = (to, from, next) => {
-  if (!store.getters.isAuthenticated) {
+    if (!store.getters.isAuthenticated) {
+        next()
+        return
+    }
     next()
-    return
-  }
-  next()
 }
 
 const ifAuthenticated = (to, from, next) => {
-  if (store.getters.isAuthenticated) {
-    next()
-    return
-  }
-  next('/login')
+    if (store.getters.isAuthenticated) {
+        next()
+        return
+    }
+    next('/login')
 }
 
 export default new Router({
-  mode: 'history',
-  linkExactActiveClass: 'is-active',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'Головна',
-      component: Home,
-    },
-    {
-      path: '/login',
-      name: 'Вхід',
-      component: Login,
-    },
-    {
-      path: '/signup',
-      name: 'Реєстрація',
-      component: Signup
-    },
-    {
-      path: '/description',
-      name: 'Опис',
-      component: Description
-    },
-    {
-      path: '/info',
-      name: 'Інформація',
-      component: Info
-    },
-    {
-      path: '/info-manage',
-      name: 'Керування інформацією',
-      component: InfoManage
-    },
-    {
-      path: '/price',
-      name: 'Прайс Лист',
-      component: Price
-    },
-    {
-      path: '/statistic',
-      name: 'Статистика',
-      component: Statistic
-    },
-      {
-          path: '/privacy-policy',
-          name: 'Політика конфіденційності',
-          component: PrivacyPolicy
-      },
-      {
-          path: '/payment',
-          name: 'Оплата',
-          component: Payment
-      },
-  ],
+    mode: 'history',
+    linkExactActiveClass: 'is-active',
+    base: process.env.BASE_URL,
+    routes: [
+        {
+            path: '/',
+            name: 'Головна',
+            component: Home,
+        },
+        {
+            path: '/login',
+            name: 'Вхід',
+            component: Login,
+        },
+        {
+            path: '/signup',
+            name: 'Реєстрація',
+            component: Signup
+        },
+        {
+            path: '/description',
+            name: 'Опис',
+            component: Description
+        },
+        {
+            path: '/info',
+            name: 'Інформація',
+            component: Info
+        },
+        {
+            path: '/info-manage',
+            name: 'Керування інформацією',
+            component: InfoManage
+        },
+        {
+            path: '/price',
+            name: 'Прайс Лист',
+            component: Price
+        },
+        {
+            path: '/statistic',
+            name: 'Статистика',
+            component: Statistic
+        },
+        {
+            path: '/privacy-policy',
+            name: 'Політика конфіденційності',
+            component: PrivacyPolicy
+        },
+        {
+            path: '/payment',
+            name: 'Оплата',
+            component: Payment
+        },
+    ],
 })

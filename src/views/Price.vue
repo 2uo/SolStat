@@ -17,7 +17,7 @@
                         </span>
                     </p><br>
                     <router-link to="/payment" class="button is-info is-medium" v-if="logged">Замовити</router-link>
-                    <router-link to="/signup" class="button is-info is-medium" v-else="logged">Замовити</router-link>
+                    <router-link to="/signup" class="button is-info is-medium" v-else>Замовити</router-link>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                         </span>
                     </p><br>
                     <router-link to="/payment" class="button is-primary is-medium" v-if="logged">Замовити</router-link>
-                    <router-link to="/signup" class="button is-primary is-medium" v-else="logged">Замовити</router-link>
+                    <router-link to="/signup" class="button is-primary is-medium" v-else>Замовити</router-link>
                 </div>
             </div>
         </div>

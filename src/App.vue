@@ -17,13 +17,22 @@
 </template>
 
 <script>
-  import NavB from '@/components/Navbar'
+    import NavB from '@/components/Navbar'
+    import Auth from '@/store/modules/auth'
 
-  export default {
-    components: {
-      NavB
+    export default {
+        data: function () {
+            return {
+                authToken: ''
+            }
+        },
+        components: {
+            NavB
+        },
+        beforeMount() {
+            this.axios.defaults.headers.common['Authorization'] = localStorage.getItem('user-token')
+        }
     }
-  }
 </script>
 
 <style lang="scss">

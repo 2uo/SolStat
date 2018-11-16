@@ -20,11 +20,16 @@
         components: {
             LineChart
         },
-        data () {
+        data() {
             return {
-                dataChart: {
-                    labels: ['Данні 1', 'Данні 2', 'Данні 3', 'Данні 4', 'Данні 5', 'Данні 6', 'Данні 7'],
-                    datasets: [
+                stats: ''
+            }
+        },
+        computed: {
+            dataChart: function() {
+                return {
+                    labels: [1, 2, 3, 4],
+                        datasets: [
                         {
                             label: 'Лінія залежності',
                             borderWidth: 2,
@@ -32,32 +37,28 @@
                             pointBorderColor: '#007272',
                             pointBackgroundColor: '#1fcac8',
                             backgroundColor: '#00b5b1',
-                            data: [20, 50, 5, 30, 78, 3, 30]
-                        },
-                        {
-                            label: 'Лінія залежності',
-                            borderWidth: 2,
-                            borderColor: '#09908E',
-                            pointBorderColor: '#F07272',
-                            pointBackgroundColor: '#10cac8',
-                            backgroundColor: '#FFb5b1',
-                            data: [10, 20, 50, 60, 30, 50, 10]
+                            data: [10, 21, 20, 1]
                         }
                     ]
                 }
             }
         },
-      beforeMount() {
-          this.axios.post('/stats')
-      }
+        beforeMount() {
+            let that = this.stats;
+            this.axios.post('/stats')
+                .then(resp => {
+                    console.log(resp.data)
+                    that = resp.data
+                })
+        }
     }
 </script>
 
 <style>
     .container {
-        display:flex;
+        display: flex;
         flex-direction: column;
-        justify-content:center;
-        align-items:center;
+        justify-content: center;
+        align-items: center;
     }
 </style>
