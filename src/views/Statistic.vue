@@ -45,7 +45,7 @@
         },
         beforeMount() {
             let that = this.stats;
-            this.axios.post('/stats')
+            this.axios.get('/stats')
                 .then(resp => {
                     console.log(resp.data)
                     that = resp.data

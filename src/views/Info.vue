@@ -59,7 +59,7 @@
       }
     },
     beforeMount() {
-      this.axios.post('info')
+      this.axios.get('info')
         .then(resp => {
           this.user = resp.data.user
         })
