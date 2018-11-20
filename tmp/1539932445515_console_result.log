@@ -1,7 +1,0 @@
-Error in line 1: while requiring "./tmp/1539932445515_console.cr"
-
-in tmp/1539932445515_console.cr:1: [1mundefined constant Repo[0m
-
-u = Repo.all(User)
-    [32;1m^~~~[0m
-
