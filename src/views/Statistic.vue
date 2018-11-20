@@ -14,44 +14,48 @@
 </template>
 
 <script>
-    import LineChart from './LineChart.js'
+  import LineChart from './LineChart.js'
 
-    export default {
-        components: {
-            LineChart
+  export default {
+    components: {
+      LineChart
+    },
+    data() {
+      return {
+        stats: {
+          day: [
+            [],[]
+          ],
+
         },
-        data() {
-            return {
-                stats: ''
+      }
+    },
+    computed: {
+      dataChart() {
+        return {
+          labels: this.stats.day[1],
+          datasets: [
+            {
+              label: 'Лінія залежності',
+              borderWidth: 2,
+              borderColor: '#00908E',
+              pointBorderColor: '#007272',
+              pointBackgroundColor: '#1fcac8',
+              backgroundColor: '#00b5b1',
+              data: this.stats.day[0]
             }
-        },
-        computed: {
-            dataChart: function() {
-                return {
-                    labels: [1, 2, 3, 4],
-                        datasets: [
-                        {
-                            label: 'Лінія залежності',
-                            borderWidth: 2,
-                            borderColor: '#00908E',
-                            pointBorderColor: '#007272',
-                            pointBackgroundColor: '#1fcac8',
-                            backgroundColor: '#00b5b1',
-                            data: [10, 21, 20, 1]
-                        }
-                    ]
-                }
-            }
-        },
-        beforeMount() {
-            let that = this.stats;
-            this.axios.get('/stats')
-                .then(resp => {
-                    console.log(resp.data)
-                    that = resp.data
-                })
+          ]
         }
+      }
+    },
+    beforeMount() {
+      this.axios.get('/stats')
+        .then(resp => {
+          console.log(resp.data)
+          this.stats = resp.data
+        })
     }
+  }
 </script>
 
 <style>
