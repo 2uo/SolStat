@@ -23,45 +23,47 @@
                 </b-field>
             </form>
             <b-message title="Реєстрація" type="is-info">
-                Якщо ви ще не зареєструвались, то ви можете це зробити на <router-link to="/signup">сторінці реєстрації</router-link>.
+                Якщо ви ще не зареєструвались, то ви можете це зробити на
+                <router-link to="/signup">сторінці реєстрації</router-link>
+                .
             </b-message>
         </div>
     </div>
 </template>
 
 <script>
-  import BInput from "buefy/src/components/input/Input";
-  import BField from "buefy/src/components/field/Field";
-  import {AUTH_REQUEST} from '@/store/actions/auth'
+    import BInput from "buefy/src/components/input/Input";
+    import BField from "buefy/src/components/field/Field";
+    import {AUTH_REQUEST} from '@/store/actions/auth'
 
-  export default {
-    components: {
-      BField,
-      BInput
-    },
-    name: 'Login',
-    data() {
-      return {
-        user: {}
-      }
-    },
-    methods: {
-      login: function () {
-        this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
-          this.$router.push('/')
-        })
-      },
-    },
-    computed: {
-      failed() {
-        if (this.$store.state.auth.status === "error") {
-          return "is-danger"
-        } else {
-          return ""
+    export default {
+        components: {
+            BField,
+            BInput
+        },
+        name: 'Login',
+        data() {
+            return {
+                user: {}
+            }
+        },
+        methods: {
+            login: function () {
+                this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
+                    this.$router.push('/')
+                })
+            },
+        },
+        computed: {
+            failed() {
+                if (this.$store.state.auth.status === "error") {
+                    return "is-danger"
+                } else {
+                    return ""
+                }
+            }
         }
-      }
     }
-  }
 </script>
 
 <style scoped lang="scss">

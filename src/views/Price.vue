@@ -44,35 +44,33 @@
 </template>
 
 <script>
-
-
     export default {
-      data: function() {
-          return {
-              nowTime: new Date(),
-              price: {
-                  primary: 19.99,
-                  elite: 29.99
-              }
-          }
-      },
-      methods: {
-          correctMounth: function (data) {
-              if (data > 12) {
-                  return data - (12 * (Math.round(data / 12)))
-              } else if (data < 1) {
-                  return 'uncorrect data'
-              } else {
-                  return data
-              }
-          }
-      },
+        data: function () {
+            return {
+                nowTime: new Date(),
+                price: {
+                    primary: 19.99,
+                    elite: 29.99
+                }
+            }
+        },
+        methods: {
+            correctMounth: function (data) {
+                if (data > 12) {
+                    return data - (12 * (Math.round(data / 12)))
+                } else if (data < 1) {
+                    return 'uncorrect data'
+                } else {
+                    return data
+                }
+            }
+        },
         computed: {
             logged() {
                 return this.$store.getters.isAuthenticated
             }
         }
-  }
+    }
 </script>
 
 <style>
@@ -80,6 +78,7 @@
         font-size: 20px;
         font-weight: 600;
     }
+
     span {
         font-weight: 400 !important;
     }

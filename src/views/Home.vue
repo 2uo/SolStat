@@ -11,15 +11,25 @@
             чекати на результати, на відміну від наших конкурентів. Вся статистика виводиться в максимально зручному
             для аналізування вигляді. А зручні інтерактивні графіки доповнюють цю картину. <br> <br>
             Аби розпочати роботу з нами вже найближчим часом - просто перейдіть на
-            <router-link to="/signup">сторінку реєстрації</router-link> і заповніть коротку анкету, відповівши на
+            <router-link to="/logged" v-if="logged">сторінку реєстрації</router-link>
+            <router-link to="/signup" v-else>сторінку реєстрації</router-link>
+            і заповніть коротку анкету, відповівши на
             декілька дуже простих запитань. Наші менеджери звяжуться з Вами і Ви зможете приступити до роботи з нами
-            одразу після <router-link to="/price">внесення оплати</router-link> за користування нашим продуктом.
+            одразу після
+            <router-link to="/price" v-if="logged">внесення оплати</router-link>
+            <router-link to="/signup" v-else>внесення оплати</router-link>
+            за користування нашим продуктом.
         </p>
     </div>
 </template>
 
 <script>
-  export default {
-    name: 'home',
-  }
+    export default {
+        name: 'home',
+        computed: {
+            logged() {
+                return this.$store.getters.isAuthenticated
+            }
+        }
+    }
 </script>

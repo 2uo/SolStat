@@ -31,40 +31,40 @@
 </template>
 
 <script>
-  import BField from "buefy/src/components/field/Field";
-  import BUpload from "buefy/src/components/upload/Upload";
+    import BField from "buefy/src/components/field/Field";
+    import BUpload from "buefy/src/components/upload/Upload";
 
-  export default {
-    components: {
-      BUpload,
-      BField
-    },
-    data() {
-      return {
-        files: [],
-        user: {}
-      }
-    },
-    methods: {
-      upload: function (formData) {
-        this.axios.post('upload', formData)
-      },
-      process: function (formData) {
-        this.upload(formData)
-      },
-      submit: function () {
-        const formData = new FormData()
-        formData.append("csv", this.files[0], this.files[0].name)
-        this.process(formData)
-      }
-    },
-    beforeMount() {
-      this.axios.get('info')
-        .then(resp => {
-          this.user = resp.data.user
-        })
+    export default {
+        components: {
+            BUpload,
+            BField
+        },
+        data() {
+            return {
+                files: [],
+                user: {}
+            }
+        },
+        methods: {
+            upload: function (formData) {
+                this.axios.post('upload', formData)
+            },
+            process: function (formData) {
+                this.upload(formData)
+            },
+            submit: function () {
+                const formData = new FormData()
+                formData.append("csv", this.files[0], this.files[0].name)
+                this.process(formData)
+            }
+        },
+        beforeMount() {
+            this.axios.get('info')
+                .then(resp => {
+                    this.user = resp.data.user
+                })
+        }
     }
-  }
 </script>
 
 <style>

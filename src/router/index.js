@@ -5,6 +5,7 @@ import Home from '../views/Home'
 import Login from '../views/Login'
 import Info from '@/views/Info'
 import Price from '@/views/Price'
+import Logged from '@/views/Logged'
 import Signup from '@/views/Signup'
 import Payment from '@/views/Payment'
 import Statistic from '@/views/Statistic'
@@ -87,5 +88,10 @@ export default new Router({
             name: 'Оплата',
             component: Payment
         },
+        {
+            path: '/logged',
+            name: 'Ви вже зареєстровані',
+            component: Logged
+        }
     ],
 })
