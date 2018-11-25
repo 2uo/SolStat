@@ -94,8 +94,17 @@
         beforeMount() {
             this.axios.get('/stats')
                 .then(resp => {
-                    console.log(resp.data)
-                    this.stats = resp.data
+                    console.log(resp.data);
+                    this.stats = resp.data;
+                    for (var i = 0; i < resp.data.month[1].length; i++) {
+                        this.stats.month[1][i] = this.stats.month[1][i].slice(0, 10);
+                    };
+                    for (var i = 0; i < resp.data.day[1].length; i++) {
+                        this.stats.day[1][i] = this.stats.day[1][i].slice(0, 10);
+                    };
+                    for (var i = 0; i < resp.data.hour[1].length; i++) {
+                        this.stats.hour[1][i] = this.stats.hour[1][i].slice(0, 16);
+                    }
                 })
         },
         methods: {

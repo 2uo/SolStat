@@ -55,8 +55,12 @@
                              title="Повторіть Ваш пароль"
                     />
                 </b-field>
+                <b-message title="Помилка!" type="is-danger" has-icon :active.sync="isActive">
+                    {{this.err.status}}: {{this.err.text}}
+                </b-message>
                 <p class="description"><span>*</span>Натискаючи "Зареєструватись" ви погоджуєтесь з
-                <router-link to="/privacy-policy">нашою політикою конфіденційності</router-link></p>
+                    <router-link to="/privacy-policy">нашою політикою конфіденційності</router-link>
+                </p>
                 <b-field>
                     <button class="button is-block is-link" type="submit">Зареєструватись</button>
                     <input class="button is-block is-text" type="reset" value="Скинути">
@@ -67,36 +71,42 @@
 </template>
 
 <script>
-  import BInput from "buefy/src/components/input/Input";
-  import BField from "buefy/src/components/field/Field";
-  import {AUTH_REQUEST} from '@/store/actions/auth'
+    import BInput from "buefy/src/components/input/Input";
+    import BField from "buefy/src/components/field/Field";
+    import {AUTH_REQUEST} from '@/store/actions/auth'
 
-  export default {
-    components: {
-      BField,
-      BInput
-    },
-    name: 'Signup',
-    data() {
-      return {
-        user: {},
-        failed: ""
-      }
-    },
-    methods: {
-      signup: function () {
-        var that = this
-        this.axios({url: 'register', data: this.user, method: 'POST'})
-          .then(resp => {
-            console.log("registered")
-            that.failed = ""
-          })
-          .catch(err => {
-            that.failed = "is-danger"
-          })
-      },
+    export default {
+        components: {
+            BField,
+            BInput
+        },
+        name: 'Signup',
+        data() {
+            return {
+                user: {},
+                failed: "",
+                isActive: false,
+                err: ''
+            }
+        },
+        methods: {
+            signup: function () {
+                var that = this
+                this.axios({url: 'register', data: this.user, method: 'POST'})
+                    .then(resp => {
+                        that.failed = ""
+                        this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
+                            this.$router.push('/')
+                        })
+                    })
+                    .catch(err => {
+                        that.isActive = true;
+                        that.err = {status: err.response.status, text: err.response.statusText};
+                        that.failed = "is-danger"
+                    })
+            },
+        }
     }
-  }
 </script>
 
 <style>

@@ -68,9 +68,3 @@
 <script>
   export default {}
 </script>
-
-<style>
-    .offset {
-        width: 50px;
-    }
-</style>
