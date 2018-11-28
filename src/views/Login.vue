@@ -22,14 +22,14 @@
                     <input class="button is-block is-text" type="reset" value="Скинути">
                 </b-field>
             </form>
-            <b-message title="Реєстрація" type="is-info" v-if="!messDanger">
+            <b-message title="Помилка авторизації!" type="is-danger" v-if="messDanger">
+                Будь ласка, перевірте правильність введених данних.
+            </b-message>
+
+            <b-message title="Реєстрація" type="is-info">
                 Якщо ви ще не зареєструвались, то ви можете це зробити на
                 <router-link to="/signup">сторінці реєстрації</router-link>
                 .
-            </b-message>
-
-            <b-message title="Помилка реєстрації!" type="is-danger" v-else>
-                Будь ласка, перевірте правильність введених данних.
             </b-message>
         </div>
     </div>
@@ -62,6 +62,7 @@
         computed: {
             failed() {
                 if (this.$store.state.auth.status === "error") {
+                    // eslint-disable-next-line
                     this.messDanger = true;
                     return "is-danger"
                 } else {

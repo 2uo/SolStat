@@ -56,7 +56,7 @@
                     />
                 </b-field>
                 <b-message title="Помилка!" type="is-danger" has-icon :active.sync="isActive">
-                    {{this.err.status}}: {{this.err.text}}
+                    {{this.err}}
                 </b-message>
                 <p class="description"><span>*</span>Натискаючи "Зареєструватись" ви погоджуєтесь з
                     <router-link to="/privacy-policy">нашою політикою конфіденційності</router-link>
@@ -84,7 +84,15 @@
         data() {
             return {
                 user: {},
-                failed: "",
+                failed: {
+                    name: '',
+                    surname: '',
+                    nickname: '',
+                    phone: '',
+                    email: '',
+                    password: '',
+                    passwordReveal: ''
+                },
                 isActive: false,
                 err: ''
             }
@@ -94,15 +102,17 @@
                 var that = this
                 this.axios({url: 'register', data: this.user, method: 'POST'})
                     .then(resp => {
-                        that.failed = ""
-                        this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
-                            this.$router.push('/')
-                        })
+                        if (that.success) {
+                            that.failed = ""
+                            this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
+                                this.$router.push('/')
+                            })
+                        } else {
+                            console.log(resp)
+                        }
                     })
                     .catch(err => {
                         that.isActive = true;
-                        that.err = {status: err.response.status, text: err.response.statusText};
-                        that.failed = "is-danger"
                     })
             },
         }
