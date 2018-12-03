@@ -2,27 +2,63 @@
     <div class="columns">
         <div class="column box is-10 is-offset-1">
             <h1 class="title">Статистика роботи SPP:</h1>
-            <p>Виробіток за весь час: {{this.arrayInfo(this.stats.month[0]).sum}} kW/h</p>
+            <p>Виробіток за весь час: {{this.stats.statistic.allTime}} kW/h</p>
             <hr>
-            <p>Середній щомісячний виробіток: {{this.arrayInfo(this.stats.month[0]).average}} kW/h</p>
-            <p>Середній щоденний виробіток: {{this.arrayInfo(this.stats.day[0]).average}} kW/h</p>
-            <p>Середній щогодинний виробіток: {{this.arrayInfo(this.stats.hour[0]).average}} kW/h</p>
-            <b-field label="Оберіть частоту запису данних">
-                <b-select placeholder="Формат" v-model="dataFormat">
-                    <option value="month">Місяць</option>
-                    <option value="day">День</option>
-                    <option value="hour">Годину</option>
-                </b-select>
-            </b-field>
-            <button class="button" v-on:click="resetData()">Reset rata</button>
+            <p>Середній щомісячний виробіток: {{this.stats.statistic.month}} kW/h</p>
+            <p>Середній щоденний виробіток: {{this.stats.statistic.day}} kW/h</p>
+            <p>Середній щогодинний виробіток: {{this.stats.statistic.hour}} kW/h</p>
+            <hr>
+            <div class="columns">
+                <div class="column datepicker-container">
+                    <b-field label="Оберіть початкову дату">
+                        <b-datepicker
+                                placeholder="Клікніть для вибору"
+                                :min-date="minDate"
+                                :max-date="maxDate"
+                                :month-names="monthNames"
+                                :day-names="dayNames"
+                                v-model="request.start"
+                                inline>
+                        </b-datepicker>
+                    </b-field>
+                </div>
+
+                <div class="column datepicker-container">
+                    <b-field label="Оберіть кінцеву дату">
+                        <b-datepicker
+                                placeholder="Клікніть для вибору"
+                                :min-date="minDate"
+                                :max-date="maxDate"
+                                :month-names="monthNames"
+                                :day-names="dayNames"
+                                v-model="request.end"
+                                inline>
+                        </b-datepicker>
+                    </b-field>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div class="column datepicker-container">
+                    <b-field label="Оберіть формат данних">
+                        <b-select placeholder="Формат"
+                                  v-model="request.period"
+                                  icon="calendar-today">
+                            <option value="hour">Години</option>
+                            <option value="day">Дні</option>
+                            <option value="month">Місяці</option>
+                        </b-select>
+                    </b-field>
+                </div>
+            </div>
+
+            <button class="button is-info is-large is-rounded" v-on:click="resetData()">Оновити статистику</button>
+
             <hr>
             <div class="charts">
                 <line-chart :chart-data="dataChart"></line-chart>
             </div>
         </div>
-        <b-field>
-
-        </b-field>
     </div>
 </template>
 
@@ -36,16 +72,14 @@
         data() {
             return {
                 stats: {
-                    month: [
-                        [], []
-                    ],
-                    day: [
-                        [], []
-                    ],
-                    hour: [
-                        [], []
-                    ]
-
+                    data: [],
+                    range: [],
+                    statistic: {
+                        avgHour: '',
+                        avgDay: '',
+                        avgMonth: '',
+                        allTime: ''
+                    }
                 },
                 dataChart: {
                     labels: [],
@@ -61,49 +95,38 @@
                         }
                     ]
                 },
-                date: 0,
-                dataFormat: 'month'
+                minDate: undefined,
+                maxDate: new Date(),
+                monthNames: ["Січень", "Лютий", "Березень", "Квітень",
+                    "Травень", "Червень", "Липень", "Серпень", "Вересень",
+                    "Жовтень", "Листопад", "Грудень"],
+                dayNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+                request: {
+                    start: undefined,
+                    end: undefined,
+                    period: 'hour'
+                },
+                firstDayOfWeek: '1'
             }
         },
         beforeMount() {
-            this.axios.get('/stats')
-                .then(resp => {
-                    this.stats = resp.data;
-                    for (var i = 0; i < resp.data.month[1].length; i++) {
-                        this.stats.month[1][i] = this.stats.month[1][i].slice(0, 10);
-                    }
-                    for (i = 0; i < resp.data.day[1].length; i++) {
-                        this.stats.day[1][i] = this.stats.day[1][i].slice(0, 10);
-                    }
-                    for (i = 0; i < resp.data.hour[1].length; i++) {
-                        this.stats.hour[1][i] = this.stats.hour[1][i].slice(0, 16);
-                    }
-                })
+            this.axios.get('/stats', {
+                start: 'start',
+                end: 'start',
+                period: 'hour'
+            }).then(resp => {
+                this.stats = resp.data;
+            })
         },
         methods: {
-            //returns the sum of the array elements and their average value
-            arrayInfo(array) {
-                let sum = 0;
-                let average = 0;
-
-                for (var i = 0; i < array.length; i++) {
-                    sum += array[i];
-
-                }
-
-                sum = Math.floor(sum * 100) / 100;
-                average = Math.floor((sum / array.length) * 100) / 100;
-
-                return {
-                    sum: sum,
-                    average: average
-                };
-
-            },
             resetData() {
-                this.stats.month[0] = this.stats.month[0].map(a => a += 100)
-                this.dataChart.labels = this.stats.month[1]
-                this.dataChart.datasets[0].data = this.stats.month[0]
+                this.axios.get('/stats', this.request).then(resp => {
+                    this.stats = resp.data;
+
+                    this.dataChart.labels = this.stats.data[0]
+                    this.dataChart.datasets[0].data = this.stats.data[1]
+                });
+
                 this.$children[1].renderChart(this.dataChart)
             }
         }
@@ -111,8 +134,9 @@
 </script>
 
 <style>
-    #line-chart {
-        width: 70vw;
-        height: 70vh;
+    .datepicker-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

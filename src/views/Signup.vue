@@ -3,42 +3,43 @@
         <div class="column box is-4 is-offset-4">
             <h1 class="title">Реєстрація</h1>
             <form @submit.prevent="signup">
-                <b-field :type="failed">
+                <b-field :type="failed.name">
                     <b-input v-model="user.name"
                              placeholder="Ім'я"
                              icon="account"
                              title="Іван"
                     />
                 </b-field>
-                <b-field :type="failed">
+                <b-field :type="failed.surname">
                     <b-input v-model="user.surname"
                              placeholder="Прізвище"
                              icon="account-outline"
                              title="Іванов"
                     />
                 </b-field>
-                <b-field :type="failed">
+                <b-field :type="failed.username">
                     <b-input v-model="user.username"
                              placeholder="Нікнейм"
                              icon="ticket-account"
                              title="_NickName_ Буде використаний як логін."
                     />
                 </b-field>
-                <b-field :type="failed">
+                <b-field :type="failed.phone">
                     <b-input v-model="user.phone"
+                             type="tel"
                              placeholder="Номер телефону"
                              icon="phone"
                              title="093-12-34-567"
                     />
                 </b-field>
-                <b-field :type="failed">
+                <b-field :type="failed.email">
                     <b-input v-model="user.email"
                              placeholder="Електронна пошта"
                              icon="at"
                              title="example@mail.com"
                     />
                 </b-field>
-                <b-field :type="failed">
+                <b-field :type="failed.password">
                     <b-input v-model="user.password"
                              type="password"
                              password-reveal
@@ -47,16 +48,22 @@
                              title="Можуть бути застосовані будь-які символи: A-Z, a-z, А-Я, а-я, 0-9, .,-/\!@#$%&*()+="
                     />
                 </b-field>
-                <b-field :type="failed">
-                    <b-input type="password"
+                <b-field :type="failed.passwordReveal">
+                    <b-input v-model="user.passwordReveal"
+                             type="password"
                              password-reveal
                              placeholder="Пароль ще раз"
                              icon="lock"
                              title="Повторіть Ваш пароль"
                     />
                 </b-field>
-                <b-message title="Помилка!" type="is-danger" has-icon :active.sync="isActive">
-                    {{this.err}}
+                <b-message title="Помилка реєстрації!" type="is-danger" has-icon :active.sync="isActive">
+                    <ul>
+                        <li v-for="error in err"
+                            v-bind:key="error.field">
+                            <b>{{error.field}}:</b> {{error.message}}
+                        </li>
+                    </ul>
                 </b-message>
                 <p class="description"><span>*</span>Натискаючи "Зареєструватись" ви погоджуєтесь з
                     <router-link to="/privacy-policy">нашою політикою конфіденційності</router-link>
@@ -83,7 +90,15 @@
         name: 'Signup',
         data() {
             return {
-                user: {},
+                user: {
+                    name: '',
+                    surname: '',
+                    nickname: '',
+                    phone: '',
+                    email: '',
+                    password: '',
+                    passwordReveal: ''
+                },
                 failed: {
                     name: '',
                     surname: '',
@@ -99,20 +114,48 @@
         },
         methods: {
             signup: function () {
-                var that = this
+                var that = this,
+                    errors = []
+                this.failed  = {name: '',
+                    surname: '',
+                    nickname: '',
+                    phone: '',
+                    email: '',
+                    password: '',
+                    passwordReveal: ''
+                }
+                this.isActive = false;
                 this.axios({url: 'register', data: this.user, method: 'POST'})
                     .then(resp => {
-                        if (that.success) {
-                            that.failed = ""
+                        if (that.success && this.user.password === this.user.passwordReveal) {
                             this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
                                 this.$router.push('/')
                             })
+                            console.log('Success sign up!');
                         } else {
-                            console.log(resp)
+                            if (that.user.passwordReveal !== this.user.password) {
+                                this.failed.passwordReveal = 'is-danger';
+                                errors.push({
+                                    field: 'password reveal',
+                                    message: 'passwords are not the same'
+                                })
+                            }
+
+                            console.log('Failed sign up. Server response: ')
+                            console.log(resp);
+
+                            that.isActive = true;
+
+                            for (var i = 0; i < resp.data.errors.length; i++) {
+                                errors.push(resp.data.errors[i]);
+                                this.failed[resp.data.errors[i].field] = 'is-danger'
+                            }
+
+                            this.err = errors;
+
+                            console.log('Failes sign up. Errors: ');
+                            console.log(this.err)
                         }
-                    })
-                    .catch(err => {
-                        that.isActive = true;
                     })
             },
         }
