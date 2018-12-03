@@ -17,7 +17,7 @@
                                 :max-date="maxDate"
                                 :month-names="monthNames"
                                 :day-names="dayNames"
-                                v-model="request.start"
+                                v-model="request.before_date"
                                 inline>
                         </b-datepicker>
                     </b-field>
@@ -31,7 +31,7 @@
                                 :max-date="maxDate"
                                 :month-names="monthNames"
                                 :day-names="dayNames"
-                                v-model="request.end"
+                                v-model="request.after_date"
                                 inline>
                         </b-datepicker>
                     </b-field>
@@ -102,8 +102,8 @@
                     "Жовтень", "Листопад", "Грудень"],
                 dayNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
                 request: {
-                    start: undefined,
-                    end: undefined,
+                    before_date: undefined,
+                    after_date: undefined,
                     period: 'hour'
                 },
                 firstDayOfWeek: '1'
@@ -111,11 +111,13 @@
         },
         beforeMount() {
             this.axios.get('/stats', {
-                start: 'start',
-                end: 'start',
+                before_date: 'start',
+                after_date: 'start',
                 period: 'hour'
             }).then(resp => {
                 this.stats = resp.data;
+            }).catch(err => {
+                console.log(err)
             })
         },
         methods: {
