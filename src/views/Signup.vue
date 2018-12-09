@@ -127,7 +127,7 @@
                 this.isActive = false;
                 this.axios({url: 'register', data: this.user, method: 'POST'})
                     .then(resp => {
-                        if (that.success && this.user.password === this.user.passwordReveal) {
+                        if (that.success || this.user.password === this.user.passwordReveal) {
                             this.$store.dispatch(AUTH_REQUEST, this.user).then(() => {
                                 this.$router.push('/')
                             })
