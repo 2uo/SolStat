@@ -58,7 +58,10 @@
         beforeMount() {
             this.axios.get('info')
                 .then(resp => {
+                    var created_at
                     this.user = resp.data.user
+                    created_at = new Date(this.user.created_at)
+                    this.user.created_at = created_at.getDay() + '.' + created_at.getMonth() + '.' + created_at.getFullYear();
                 })
         }
     }
