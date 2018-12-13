@@ -14,11 +14,7 @@
             <router-link to="/logged" v-if="logged">сторінку реєстрації</router-link>
             <router-link to="/signup" v-else>сторінку реєстрації</router-link>
             і заповніть коротку анкету, відповівши на
-            декілька дуже простих запитань. Наші менеджери звяжуться з Вами і Ви зможете приступити до роботи з нами
-            одразу після
-            <router-link to="/price" v-if="logged">внесення оплати</router-link>
-            <router-link to="/login" v-else>внесення оплати</router-link>
-            за користування нашим продуктом.
+            декілька дуже простих запитань.
         </p>
         <hr>
         <iframe width="560"
