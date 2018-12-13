@@ -6,6 +6,7 @@ import Login from '../views/Login'
 import Info from '@/views/Info'
 import Logged from '@/views/Logged'
 import Signup from '@/views/Signup'
+import HowToUse from'@/views/HowToUse'
 import Statistic from '@/views/Statistic'
 import Description from '@/views/Description'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
@@ -74,6 +75,11 @@ export default new Router({
             path: '/logged',
             name: 'Ви вже зареєстровані',
             component: Logged
+        },
+        {
+            path: '/howtouse',
+            name: 'Як користуватись сервісом',
+            component: HowToUse
         }
     ],
 })

@@ -14,9 +14,11 @@
             <div class="navbar-start" v-if="logged">
                 <router-link to="/info" class="navbar-item">Панель інформації</router-link>
                 <router-link to="/statistic" class="navbar-item">Статистика</router-link>
+                <router-link to="/howtouse" class="navbar-item">Як користуватись сервісом</router-link>
             </div>
             <div class="navbar-start" v-else>
                 <router-link to="/description" class="navbar-item">Опис</router-link>
+                <router-link to="/howtouse" class="navbar-item">Як користуватись сервісом</router-link>
             </div>
 
             <div class="navbar-end">
