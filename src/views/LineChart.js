@@ -22,7 +22,7 @@ export default {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Ват'
+                        labelString: 'Кіловатгодини'
                     }
                 }]
             }
