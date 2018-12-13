@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <button class="button is-info is-large is-rounded" v-on:click="resetData()">Оновити статистику</button>
+            <button class="button is-info is-large is-rounded" v-on:click="fetchData()">Оновити статистику</button>
 
             <hr>
             <div class="charts">
@@ -115,40 +115,40 @@
         this.request.before_date = this.maxDate
         this.stats = resp.data;
 
+        this.setGraphData()
         console.log(resp.data)
-
       }).catch(err => {
         console.log('Request error: ' + err)
       })
     },
-    mounted() {
-      this.resetData();
-    },
     methods: {
-      resetData() {
+      fetchData() {
         this.axios.get('/stats', {
           params: this.request
         }).then(resp => {
           this.stats = resp.data;
-          this.dataChart = {
-            labels: this.stats.data.dates,
-            datasets: [
-              {
-                label: 'Періодичний виробіток (kW/h)',
-                borderWidth: 2,
-                borderColor: '#00908E',
-                pointBorderColor: '#007272',
-                pointBackgroundColor: '#1fcac8',
-                backgroundColor: '#00b5b1',
-                data: this.stats.data.amounts
-              }
-            ]
-          }
+          this.setGraphData()
           console.log(resp.data)
         }).catch(err => {
           console.log('reseting data returned error: ')
           console.log(err)
         });
+      },
+      setGraphData() {
+        this.dataChart = {
+          labels: this.stats.data.dates,
+          datasets: [
+            {
+              label: 'Періодичний виробіток (kW/h)',
+              borderWidth: 2,
+              borderColor: '#00908E',
+              pointBorderColor: '#007272',
+              pointBackgroundColor: '#1fcac8',
+              backgroundColor: '#00b5b1',
+              data: this.stats.data.amounts
+            }
+          ]
+        }
       }
     }
   }
