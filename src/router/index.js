@@ -4,12 +4,9 @@ import Router from 'vue-router'
 import Home from '../views/Home'
 import Login from '../views/Login'
 import Info from '@/views/Info'
-import Price from '@/views/Price'
 import Logged from '@/views/Logged'
 import Signup from '@/views/Signup'
-import Payment from '@/views/Payment'
 import Statistic from '@/views/Statistic'
-import InfoManage from '@/views/InfoManage'
 import Description from '@/views/Description'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
 
@@ -64,16 +61,6 @@ export default new Router({
             component: Info
         },
         {
-            path: '/info-manage',
-            name: 'Керування інформацією',
-            component: InfoManage
-        },
-        {
-            path: '/price',
-            name: 'Прайс Лист',
-            component: Price
-        },
-        {
             path: '/statistic',
             name: 'Статистика',
             component: Statistic
@@ -82,11 +69,6 @@ export default new Router({
             path: '/privacy-policy',
             name: 'Політика конфіденційності',
             component: PrivacyPolicy
-        },
-        {
-            path: '/payment',
-            name: 'Оплата',
-            component: Payment
         },
         {
             path: '/logged',

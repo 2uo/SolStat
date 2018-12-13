@@ -13,14 +13,10 @@
         <div class="navbar-menu" id="navMenu">
             <div class="navbar-start" v-if="logged">
                 <router-link to="/info" class="navbar-item">Панель інформації</router-link>
-                <router-link to="/info-manage" class="navbar-item">Керування інформацією</router-link>
                 <router-link to="/statistic" class="navbar-item">Статистика</router-link>
-                <router-link to="/payment" class="navbar-item">Оплата</router-link>
-                <router-link to="/price" class="navbar-item">Прайс Лист</router-link>
             </div>
             <div class="navbar-start" v-else>
                 <router-link to="/description" class="navbar-item">Опис</router-link>
-                <router-link to="/price" class="navbar-item">Прайс Лист</router-link>
             </div>
 
             <div class="navbar-end">

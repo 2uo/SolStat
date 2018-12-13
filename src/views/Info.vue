@@ -7,9 +7,6 @@
             <p class="phone"><strong>Номер телефону: </strong> {{user.phone}}</p>
             <p class="email"><strong>Електронна пошта: </strong> {{user.email}}</p>
             <p class="registration"><strong>Дата реєтрації: </strong> {{user.created_at}}</p>
-            <br>
-            <p class="name"><strong>Тип підписки: </strong> Elite</p>
-            <p class="name"><strong>Дія підписки: </strong> до 05.02.2019, 18:42</p>
             <hr>
             <b-field>
                 <b-upload v-model="files" required="true" accept="csv">
