@@ -103,15 +103,9 @@
                     period: 'hour'
                 }
             }).then(resp => {
-                var dt = {
-                    first: '',
-                    last: ''
-                };
-                dt.first = resp.data.range.first_date.split(/[: T-]/).map(parseFloat);
-                dt.last = resp.data.range.last_date.split(/[: T-]/).map(parseFloat);
-                this.minDate = new Date(dt.first[0], dt.first[1] - 1, dt.first[2], dt.first[3] || 0, dt.first[4] || 0, dt.first[5] || 0, 0);
-                this.maxDate = new Date(dt.last[0], dt.last[1] - 1, dt.last[2], dt.last[3] || 0, dt.last[4] || 0, dt.last[5] || 0, 0);
-                this.request.after_date = new Date(dt.first[0], dt.first[1] - 1, dt.first[2] + 1, dt.first[3] || 0, dt.first[4] || 0, dt.first[5] || 0, 0);
+                this.minDate = new Date(resp.data.range.first_date);
+                this.maxDate = new Date(resp.data.range.last_date);
+                this.request.after_date = this.minDate
                 this.request.before_date = this.maxDate
                 this.stats = resp.data;
 
@@ -130,7 +124,7 @@
                     this.setGraphData()
                     console.log(resp.data)
                 }).catch(err => {
-                    console.log('reseting data returned error: ')
+                    console.log('fetching data returned error: ')
                     console.log(err)
                 });
             },
@@ -139,7 +133,7 @@
                     labels: this.stats.data.dates,
                     datasets: [
                         {
-                            label: 'Періодичний виробіток (kW/h)',
+                            label: 'Періодичний виробіток (kW*h)',
                             borderWidth: 2,
                             borderColor: '#00908E',
                             pointBorderColor: '#007272',
@@ -154,7 +148,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .datepicker-container {
         display: flex;
         justify-content: center;
