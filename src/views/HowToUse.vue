@@ -1,5 +1,5 @@
 <template>
-    <div class="box container">
+    <div class="box container howtousecontent">
         <div class="signin">
             <h2 class="title">Реєстрація, вхід</h2>
             <div class="content">
@@ -12,8 +12,7 @@
                 <br>
                 Якщо Ви наразі вже зареєстровані, то для входу Вам потрібно авторизуватися на сервісі. Це Ви можете
                 зробити на
-                <router-link to="/login">сторінці авторизації</router-link>
-                :
+                <router-link to="/login">сторінці авторизації:</router-link>
                 <br>
                 <img src="Images/login.png" alt="log in page">
             </div>
@@ -130,15 +129,15 @@
 </script>
 
 <style>
-    .info-panel {
-        display: inline;
-    }
-
     .is-red {
         color: red;
     }
 
     .content {
         font-size: 1.1em !important;
+    }
+
+    .howtousecontent {
+        text-align: left;
     }
 </style>
