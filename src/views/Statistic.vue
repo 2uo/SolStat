@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="columns" v-if="!isFailed">
+        <div class="columns">
             <div class="column box is-10 is-offset-1">
                 <h1 class="title">Статистика роботи Сонячної Електростанції:</h1>
                 <p>Виробіток за весь час: {{this.stats.statistics.avgMonth}} kW/h</p>
@@ -64,29 +64,6 @@
                     <b-upload v-model="files" required="true" accept="csv">
                         <a class="button is-link">
                             <span>Завантажити новий файл статистики</span>
-                        </a>
-                    </b-upload>
-                    <div class="control" v-if="files && files.length">
-                  <span class="file-name">
-                    {{ files[0].name }}
-                  </span>
-                    </div>
-                    <div class="control" v-if="files && files.length">
-                        <button class="button is-link" @click="submit">Submit</button>
-                    </div>
-                </b-field>
-            </div>
-        </div>
-
-        <div class="columns" v-else>
-            <div class="column box is-10 is-offset-1">
-                <h1 class="title">Завантажте файл статистики</h1>
-                <h2 class="subtitle">Перед початком роботи з сервісом SolStat необхідно завантажити файл статистики</h2>
-                <hr>
-                <b-field>
-                    <b-upload v-model="files" required="true" accept="csv">
-                        <a class="button is-link">
-                            <span>Завантажити файл статистики</span>
                         </a>
                     </b-upload>
                     <div class="control" v-if="files && files.length">
