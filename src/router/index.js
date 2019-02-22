@@ -7,6 +7,7 @@ import Info from '@/views/Info'
 import Logged from '@/views/Logged'
 import Signup from '@/views/Signup'
 import HowToUse from'@/views/HowToUse'
+import TryUsing from '@/views/TryUsing'
 import Statistic from '@/views/Statistic'
 import Description from '@/views/Description'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
@@ -80,6 +81,11 @@ export default new Router({
             path: '/howtouse',
             name: 'Як користуватись сервісом',
             component: HowToUse
+        },
+        {
+            path: '/tryusing',
+            name: 'Спробувати',
+            component: TryUsing
         }
     ],
 })
