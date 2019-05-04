@@ -20,6 +20,7 @@
                 <router-link to="/description" class="navbar-item">Опис</router-link>
                 <router-link to="/howtouse" class="navbar-item">Як користуватись сервісом</router-link>
                 <router-link to="/tryusing" class="navbar-item">Спробувати</router-link>
+                <router-link to="/links" class="navbar-item">Посилання (МАН)</router-link>
             </div>
 
             <div class="navbar-end">

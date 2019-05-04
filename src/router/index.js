@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Home from '../views/Home'
 import Login from '../views/Login'
 import Info from '@/views/Info'
+import Links from '@/views/links'
 import Logged from '@/views/Logged'
 import Signup from '@/views/Signup'
 import HowToUse from'@/views/HowToUse'
@@ -86,6 +87,11 @@ export default new Router({
             path: '/tryusing',
             name: 'Спробувати',
             component: TryUsing
+        },
+        {
+            path: '/links',
+            name: 'Посилання (МАН)',
+            component: Links
         }
     ],
 })

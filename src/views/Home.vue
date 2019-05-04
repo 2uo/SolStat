@@ -16,16 +16,6 @@
             і заповніть коротку анкету, відповівши на
             декілька дуже простих запитань.
         </p>
-        <hr>
-        <iframe width="560"
-                height="315"
-                src="https://www.youtube.com/embed/1NLbHkyCpvc"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-        >
-            Нажаль, Ваш браузер не підтримує вбудовані фрейми.
-        </iframe>
     </div>
 </template>
 
